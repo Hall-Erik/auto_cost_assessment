@@ -3,3 +3,4 @@ blah.json
 venv/
 .vscode/
 result.json
+sandbot.py

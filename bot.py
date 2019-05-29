@@ -28,15 +28,18 @@ while True:
             with open('last_tweet_id', 'w') as f:
                 f.write(str(result.id))
             last_tweet_id = result.id
-            try:
-                print('Replying...')
-                api.update_status(
-                    status='but at what cost?',
-                    in_reply_to_status_id=result.id,
-                    auto_populate_reply_metadata=True
-                )
-                print('Done.')
-            except Exception as e:
-                print('Something went wrong.')
+            if result.in_reply_to_status_id:
+                try:
+                    print('Replying...')
+                    api.update_status(
+                        status='but at what cost?',
+                        in_reply_to_status_id=result.id,
+                        auto_populate_reply_metadata=True
+                    )
+                    print('Done.')
+                except Exception as e:
+                    print('Something went wrong.')
+            else:
+                print("It's a reply, ignoring...")
             
-    time.sleep(5)
+    time.sleep(10)

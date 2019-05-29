@@ -28,7 +28,7 @@ while True:
             with open('last_tweet_id', 'w') as f:
                 f.write(str(result.id))
             last_tweet_id = result.id
-            if result.in_reply_to_status_id:
+            if result.in_reply_to_status_id == None:
                 try:
                     print('Replying...')
                     api.update_status(

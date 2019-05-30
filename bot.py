@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import os
 import tweepy
 import time
+import random
 
 load_dotenv()
 
@@ -13,6 +14,21 @@ access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET')
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
+
+# plural for status?
+stati = [
+    'but at what cost?',
+    'but at what cost?',
+    'but at what cost?',
+    'but at what cost?',
+    'but at what Aaron',
+    'bUt At WhAt CoSt?',
+    'BUT AT WHAT COST!?',
+    'but at what COST?',
+    'Aar-- ...I mean - but at what cost?',
+    'But. At. What. Cost?',
+    'しかし、いくら？'
+]
 
 last_tweet_id = 0
 with open('last_tweet_id') as f:
@@ -31,8 +47,9 @@ while True:
             if result.in_reply_to_status_id == None:
                 try:
                     print('Replying...')
+                    status = random.choice(stati)
                     api.update_status(
-                        status='but at what cost?',
+                        status=status,
                         in_reply_to_status_id=result.id,
                         auto_populate_reply_metadata=True
                     )

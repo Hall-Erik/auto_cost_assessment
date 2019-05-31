@@ -36,7 +36,7 @@ with open('last_tweet_id') as f:
 
 while True:
     aaron_timeline = api.user_timeline(
-        id='tenderlove', since_id=last_tweet_id)
+        user_id=14761655, since_id=last_tweet_id)
 
     for result in aaron_timeline:
         if result.id > last_tweet_id:

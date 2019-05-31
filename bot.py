@@ -19,8 +19,6 @@ api = tweepy.API(auth)
 stati = [
     'but at what cost?',
     'but at what cost?',
-    'but at what cost?',
-    'but at what cost?',
     'but at what Aaron',
     'bUt At WhAt CoSt?',
     'BUT AT WHAT COST!?',
@@ -44,20 +42,24 @@ while True:
             with open('last_tweet_id', 'w') as f:
                 f.write(str(result.id))
             last_tweet_id = result.id
-            if result.in_reply_to_status_id == None and \
-                result.text[:4] != 'RT @':
-                try:
-                    print('Replying...')
-                    status = random.choice(stati)
-                    api.update_status(
-                        status=status,
-                        in_reply_to_status_id=result.id,
-                        auto_populate_reply_metadata=True
-                    )
-                    print('Done.')
-                except Exception as e:
-                    print('Something went wrong.')
+            roll = random.randint(1,3)
+            if roll == 1:
+                if result.in_reply_to_status_id == None and \
+                    result.text[:4] != 'RT @':
+                    try:
+                        print('Replying...')
+                        status = random.choice(stati)
+                        api.update_status(
+                            status=status,
+                            in_reply_to_status_id=result.id,
+                            auto_populate_reply_metadata=True
+                        )
+                        print('Done.')
+                    except Exception as e:
+                        print('Something went wrong.')
+                else:
+                    print("It's a reply or RT, ignoring...")
             else:
-                print("It's a reply or RT, ignoring...")
+                print(f'Rolled a {roll}, ignoring...')
             
     time.sleep(10)

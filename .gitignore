@@ -5,3 +5,4 @@ venv/
 result.json
 sandbot.py
 .python-version
+last_tweet_id

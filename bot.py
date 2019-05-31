@@ -44,7 +44,8 @@ while True:
             with open('last_tweet_id', 'w') as f:
                 f.write(str(result.id))
             last_tweet_id = result.id
-            if result.in_reply_to_status_id == None:
+            if result.in_reply_to_status_id == None and \
+                result.text[:4] != 'RT @':
                 try:
                     print('Replying...')
                     status = random.choice(stati)
@@ -57,6 +58,6 @@ while True:
                 except Exception as e:
                     print('Something went wrong.')
             else:
-                print("It's a reply, ignoring...")
+                print("It's a reply or RT, ignoring...")
             
     time.sleep(10)

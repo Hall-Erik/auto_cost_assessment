@@ -59,6 +59,7 @@ for result in aaron_timeline:
                         auto_populate_reply_metadata=True
                     )
                     print('Done.')
+                    time.sleep(15)
                 except Exception as e:
                     print('Something went wrong.')
             else:

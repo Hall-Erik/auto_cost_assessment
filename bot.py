@@ -25,7 +25,8 @@ stati = [
     'but at what COST?',
     'Aar-- ...I mean - but at what cost?',
     'But. At. What. Cost?',
-    'しかし、いくら？'
+    'しかし、いくら？',
+    'We need to talk.'
 ]
 
 last_tweet_id = 0

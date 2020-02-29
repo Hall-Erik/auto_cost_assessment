@@ -56,7 +56,11 @@ for result in aaron_timeline:
                     print('Replying...')
                     roll = random.randint(1,5)
                     if roll == 1:
-                        api.update_with_media(filename='a-a-ron.gif')
+                        api.update_with_media(
+                            filename='a-a-ron.gif',
+                            in_reply_to_status_id=result.id,
+                            auto_populate_reply_metadata=True
+                        )
                     else:
                         status = random.choice(stati)
                         api.update_status(

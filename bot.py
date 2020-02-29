@@ -26,6 +26,7 @@ stati = [
     'Aar-- ...I mean - but at what cost?',
     'But. At. What. Cost?',
     'しかし、いくら？',
+    'しかし、どんな費用で？',
     'We need to talk.'
 ]
 
@@ -53,12 +54,16 @@ for result in aaron_timeline:
                 result.text[:4] != 'RT @':
                 try:
                     print('Replying...')
-                    status = random.choice(stati)
-                    api.update_status(
-                        status=status,
-                        in_reply_to_status_id=result.id,
-                        auto_populate_reply_metadata=True
-                    )
+                    roll = random.randint(1,5)
+                    if roll == 1:
+                        api.update_with_media(filename='a-a-ron.gif')
+                    else:
+                        status = random.choice(stati)
+                        api.update_status(
+                            status=status,
+                            in_reply_to_status_id=result.id,
+                            auto_populate_reply_metadata=True
+                        )
                     print('Done.')
                     time.sleep(15)
                 except Exception as e:

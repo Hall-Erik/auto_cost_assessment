@@ -1,0 +1,12 @@
+# Begin Whenever generated tasks for: /home/erik/scraper/config/schedule.rb at: 2018-05-09 11:20:23 -0600
+# PATH=/home/erik/.rbenv/versions/2.1.0/bin:/home/erik/.rbenv/libexec:/home/erik/.rbenv/plugins/ruby-build/bin:/home/erik/bin:/home/erik/.local/bin:/home/erik/.rbenv/shims:/home/erik/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+PYENV_ROOT=/home/erik/.pyenv
+PATH=/home/erik/bin:/home/erik/.local/bin:/home/erik/.pyenv/shims:/home/erik/.pyenv/bin:/home/erik/.rbenv/shims:/home/erik/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+
+# 0 0,6,12,18 * * * /bin/bash -l -c 'cd /home/erik/scraper && RAILS_ENV=development bundle exec rake fetch_jobs --silent >> /home/erik/cron_log.log 2>&1'
+# 0 18 * * 1-5 /bin/bash -l -c 'cd /home/erik/pyscraper && python soup.py >> /home/erik/cron_log.log 2>&1'
+0 18 * * 1-5 /bin/bash -l -c 'cd /home/erik/ksl-scraper && python script.py >> /home/erik/ksl_log.log 2>&1'
+0,15,30,45 * * * * /bin/bash -l -c 'cd /home/erik/auto_cost_assessment && python bot.py >> /home/erik/bot_lob.log 2>&1'
+# * * * * * env > /home/erik/env.output
+
+# End Whenever generated tasks for: /home/erik/scraper/config/schedule.rb at: 2018-05-09 11:20:23 -0600
